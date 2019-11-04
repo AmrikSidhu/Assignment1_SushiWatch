@@ -22,21 +22,26 @@
                         </label>
                         <label alignment="right" id="Z22-I5-KVX"/>
                         <label alignment="left" id="Bbc-Dz-tH5"/>
-                        <button width="27" height="20" alignment="center" title="||" id="u9j-hl-wRH">
-                            <connections>
-                                <action selector="btnPause" destination="AgC-eL-Hgc" id="dly-l7-EQA"/>
-                            </connections>
-                        </button>
-                        <button width="26" height="22" alignment="center" title="&gt;" id="cLL-6E-Qrb">
-                            <connections>
-                                <action selector="btnResume" destination="AgC-eL-Hgc" id="nMC-An-kZ5"/>
-                            </connections>
-                        </button>
                         <button width="28" height="23" alignment="left" title="√" id="DYM-6L-BEA">
                             <connections>
                                 <action selector="btnClickBoost" destination="AgC-eL-Hgc" id="hMd-wu-Uvg"/>
                             </connections>
                         </button>
+                        <label alignment="center" text="tap twice to pause" id="33K-Ab-iDA">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer numberOfTapsRequired="2" id="nWr-XW-yG0">
+                                    <connections>
+                                        <action selector="pauseGesture:" destination="AgC-eL-Hgc" id="2S4-np-BZG"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                                <tapGestureRecognizer numberOfTapsRequired="3" id="DdN-zV-gqJ">
+                                    <connections>
+                                        <action selector="gestureResume:" destination="AgC-eL-Hgc" id="GdG-sx-nDO"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                        </label>
                         <button width="136" height="19" alignment="center" verticalAlignment="bottom" title="&lt;==" id="LT3-2A-zzi">
                             <connections>
                                 <action selector="btnLeftClicked" destination="AgC-eL-Hgc" id="Tll-zv-xo7"/>
@@ -46,6 +51,7 @@
                     <connections>
                         <outlet property="lblBooster" destination="Bbc-Dz-tH5" id="aER-VM-iJl"/>
                         <outlet property="lblGameOver" destination="jGa-2j-qDt" id="QFi-41-5bj"/>
+                        <outlet property="lblPlayPause" destination="33K-Ab-iDA" id="Ceo-zL-OY4"/>
                         <outlet property="lbltimerForWatch" destination="Z22-I5-KVX" id="uUX-B1-LEr"/>
                     </connections>
                 </controller>

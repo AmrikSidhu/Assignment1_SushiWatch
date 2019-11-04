@@ -89,8 +89,26 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
             }
 
+    @IBOutlet weak var lblPlayPause: WKInterfaceLabel!
     
-    @IBAction func btnResume() {
+    @IBAction func pauseGesture(_ sender: Any) {
+        
+        if (WCSession.default.isReachable) {
+                           print("Phone reachable")
+                           let message = ["pause": "yes"]
+                           WCSession.default.sendMessage(message, replyHandler: nil)
+                           // output a debug message to the console
+                           print("sent pause request to phone")
+                           
+            
+            self.lblPlayPause.setText("3 Taps to Resume")
+                       }
+                       else {
+                           print("WATCH: Cannot reach phone")
+                       }
+    }
+    
+    @IBAction func gestureResume(_ sender: Any) {
         
         if (WCSession.default.isReachable) {
             print("Phone reachable")
@@ -98,26 +116,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             WCSession.default.sendMessage(message, replyHandler: nil)
             // output a debug message to the console
             print("sent pause request to phone")
-            //self.lblGameState.setText("Paused! Swipe to Resume")
-        }
+            self.lblPlayPause.setText("2 Taps to Pause")        }
         else {
             print("WATCH: Cannot reach phone")
         }
     }
-    @IBAction func btnPause() {
-        
-        if (WCSession.default.isReachable) {
-                    print("Phone reachable")
-                    let message = ["pause": "yes"]
-                    WCSession.default.sendMessage(message, replyHandler: nil)
-                    // output a debug message to the console
-                    print("sent pause request to phone")
-                    //self.lblGameState.setText("Paused! Swipe to Resume")
-                }
-                else {
-                    print("WATCH: Cannot reach phone")
-                }
-    }
+    
+
     @IBAction func btnRightClicked() {
         if (WCSession.default.isReachable) {
             print("phone reachable")
